@@ -14,7 +14,7 @@ development:
   reconnect: false
   database: entrap_development
   pool: 5
-  username: entrap
+  username: root
   password:
   host: localhost
 
@@ -27,7 +27,7 @@ test:
   reconnect: false
   database: entrap_test
   pool: 5
-  username: entrap
+  username: root
   password:
   host: localhost
 
@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: entrap_production
   pool: 5
-  username: entrap
+  username: root
   password:
   host: localhost
