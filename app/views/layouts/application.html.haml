@@ -10,6 +10,16 @@
   %body
     %header
       = render 'layouts/navigation'
+
     %main{:role => "main"}
       = render 'layouts/messages'
       = yield
+
+    .container
+      %hr
+      %footer
+        .row
+          .col-lg-12
+            %p
+              =raw "Copyright &copy; Entrap FightGear 2016"
+
