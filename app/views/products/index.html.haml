@@ -1,0 +1,79 @@
+.container
+  .row
+    .col-md-3
+      = render "category"
+
+    .col-md-9
+      .row.carousel-holder
+        .col-md-12
+          .carousel.slide#carousel-example-generic{ "data-ride" => "carousel" }
+            %ol.carousel-indicators
+              %li.active{ "data-target" => "#carousel-example-generic", "data-slide-to" => 0 }
+              %li{ "data-target" => "#carousel-example-generic", "data-slide-to" => 1 }
+              %li{ "data-target" => "#carousel-example-generic", "data-slide-to" => 2 }
+            .carousel-inner
+              .item.active
+                = image_tag "http://placehold.it/800x300", class: "slide-image"
+              .item
+                = image_tag "http://placehold.it/800x300", class: "slide-image"
+              .item
+                = image_tag "http://placehold.it/800x300", class: "slide-image"
+            = link_to "#carousel-example-generic", class: "left carousel-control", "data-slide" => "prev" do
+              %span.glyphicon.glyphicon-chevron-left
+            = link_to "#carousel-example-generic", class: "right carousel-control", "data-slide" => "next" do
+              %span.glyphicon.glyphicon-chevron-right
+
+      = link_to "Add Product", new_product_path
+
+
+      .row
+        - @products.each do |product|
+          .col-sm-4.col.md-4.col-lg-4
+            .thumbnail
+              = link_to product do
+                = image_tag product.image
+              .caption
+                %h4.pull-right
+                  = raw "&#x20B1;"
+                  = product.price
+                %h4
+                  = link_to product.name, "#"
+                = link_to "Edit", edit_product_path(product)
+                |
+                = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }               
+              .ratings
+                %p.pull-right
+                  = "16 reviews"
+                %p
+                  %span.glyphicon.glyphicon-star
+                  %span.glyphicon.glyphicon-star
+                  %span.glyphicon.glyphicon-star
+                  %span.glyphicon.glyphicon-star
+                  %span.glyphicon.glyphicon-star
+
+        / .col-sm-4.col.md-4.col-lg-4
+        /   .thumbnail
+        /     = image_tag "Gi-blue"
+        /     .caption
+        /       %h4.pull-right
+        /         = "$99.99"
+        /       %h4
+        /         = link_to "Product 3", "#"
+        /       %p
+        /         = "This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        /     .ratings
+        /       %p.pull-right
+        /         = "16 reviews"
+        /       %p
+        /         %span.glyphicon.glyphicon-star
+        /         %span.glyphicon.glyphicon-star
+        /         %span.glyphicon.glyphicon-star
+        /         %span.glyphicon.glyphicon-star
+        /         %span.glyphicon.glyphicon-star
+
+
+
+
+
+
+

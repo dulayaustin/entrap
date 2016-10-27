@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'website#index'
+  resources :products
+ 
+  root to: 'products#index'
 end
