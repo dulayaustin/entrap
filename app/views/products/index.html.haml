@@ -40,7 +40,7 @@
                   = link_to product.name, "#"
                 = link_to "Edit", edit_product_path(product)
                 |
-                = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }               
+                = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }               
               .ratings
                 %p.pull-right
                   = "16 reviews"
@@ -51,25 +51,6 @@
                   %span.glyphicon.glyphicon-star
                   %span.glyphicon.glyphicon-star
 
-        / .col-sm-4.col.md-4.col-lg-4
-        /   .thumbnail
-        /     = image_tag "Gi-blue"
-        /     .caption
-        /       %h4.pull-right
-        /         = "$99.99"
-        /       %h4
-        /         = link_to "Product 3", "#"
-        /       %p
-        /         = "This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        /     .ratings
-        /       %p.pull-right
-        /         = "16 reviews"
-        /       %p
-        /         %span.glyphicon.glyphicon-star
-        /         %span.glyphicon.glyphicon-star
-        /         %span.glyphicon.glyphicon-star
-        /         %span.glyphicon.glyphicon-star
-        /         %span.glyphicon.glyphicon-star
 
 
 

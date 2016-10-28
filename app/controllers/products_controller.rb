@@ -17,11 +17,19 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
+    
     if @product.save
-      redirect_to root_url, notice: 'Product was successfully created.'
+      redirect_to products_path, notice: 'Product was successfully created.'
     else
-      redirect_to new_product_path, notice: 'Error'
+      render :new
+    end
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path(@product), notice: 'Product was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -36,6 +44,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :price, :image)
+      params.require(:product).permit(:name, :price, :image, :category_id)
     end
 end

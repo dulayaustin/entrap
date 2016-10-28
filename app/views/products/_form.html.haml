@@ -1,4 +1,4 @@
-= simple_form_for @product, url: products_path do |f|
+= simple_form_for @product do |f|
   .form-inputs
     .row
       .col-md-6
@@ -8,6 +8,8 @@
         = f.input :price, placeholder: 'Enter Price', input_html: { class: "form-control" }
         %br/
     = f.input :image, as: :file
+    %br/
+    = f.association :category, :input_html => { :multiple => false }, :value_method => :id, :include_blank => false
     %br/
     = f.button :submit, "Save", class: "btn-danger"
     = link_to 'Back', :back, class: "btn btn-default"
