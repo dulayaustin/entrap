@@ -5,7 +5,7 @@ class CreateCategories < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     ["gi", "shirts", "shorts"].each do |c|
-      Category.find_or_create_by(name: c.titleize)
+      Category.find_or_create_by(name: c)
     end
   end
 end

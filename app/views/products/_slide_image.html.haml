@@ -1,0 +1,18 @@
+.row.carousel-holder
+  .col-md-12
+    .carousel.slide#carousel-example-generic{ "data-ride" => "carousel" }
+      %ol.carousel-indicators
+        %li.active{ "data-target" => "#carousel-example-generic", "data-slide-to" => 0 }
+        %li{ "data-target" => "#carousel-example-generic", "data-slide-to" => 1 }
+        %li{ "data-target" => "#carousel-example-generic", "data-slide-to" => 2 }
+      .carousel-inner
+        .item.active
+          = image_tag "http://placehold.it/800x300", class: "slide-image"
+        .item
+          = image_tag "http://placehold.it/800x300", class: "slide-image"
+        .item
+          = image_tag "http://placehold.it/800x300", class: "slide-image"
+      = link_to "#carousel-example-generic", class: "left carousel-control", "data-slide" => "prev" do
+        %span.glyphicon.glyphicon-chevron-left
+      = link_to "#carousel-example-generic", class: "right carousel-control", "data-slide" => "next" do
+        %span.glyphicon.glyphicon-chevron-right

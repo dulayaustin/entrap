@@ -30,8 +30,11 @@ body {
     white-space: nowrap;
 }
 
-.thumbnail img {
+.thumbnail img.product-image {
     width: 100%;
+    /*min-height: 260px;
+    max-height: 440px;*/
+    height: 260px;
 }
 
 .ratings {

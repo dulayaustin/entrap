@@ -9,7 +9,7 @@
         %br/
     = f.input :image, as: :file
     %br/
-    = f.association :category, :input_html => { :multiple => false }, :value_method => :id, :include_blank => false
+    = f.association :category, :input_html => { :multiple => false }, :value_method => :id, :include_blank => "Select a category"
     %br/
     = f.button :submit, "Save", class: "btn-danger"
     = link_to 'Back', :back, class: "btn btn-default"

@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem "paperclip"
 gem 'simple_form'
+gem 'kaminari'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
