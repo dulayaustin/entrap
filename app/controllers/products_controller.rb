@@ -23,8 +23,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+
     
     if @product.save
+      if params[:images]
+        params[:images].each { |image| @product.images.create(image: image) }
+      end
       redirect_to products_path, notice: 'Product was successfully created.'
     else
       render :new
@@ -58,6 +62,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :price, :image, :category_id)
+      params.require(:product).permit(:name, :price, :description, :category_id)
     end
 end

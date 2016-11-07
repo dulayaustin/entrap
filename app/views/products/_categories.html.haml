@@ -1,5 +1,5 @@
 %p.lead
-  = "Products"
+  = controller_name.titleize
 .list-group
   - @categories.each do |category|
-    = link_to category.name.titleize, category_products_path(category.name), class: "list-group-item"
+    = link_to category.name.titleize, category_products_path(category.name), class: "list-group-item #{"active" if params[:name] == category.name }"

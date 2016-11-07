@@ -5,13 +5,13 @@
     .col-sm-4.col.md-4.col-lg-4
       .thumbnail
         = link_to product do
-          = image_tag product.image, class: "product-image"
+          = image_tag product.images.first, class: "product-image" # Error on fetching url path
         .caption
           %h4.pull-right
-            = raw "&#x20B1;"
-            = product.price
+            = number_to_currency(product.price, unit: "₱")
+
           %h4
-            = link_to product.name, "#"
+            = link_to product.name, product
           = link_to "Edit", edit_product_path(product)
           |
           = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }               
