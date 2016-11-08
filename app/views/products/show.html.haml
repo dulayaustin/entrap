@@ -1,77 +1,76 @@
-.container
-  .row
-    .col-md-3
-      = render "categories"
+.row-fluid
+  .col-md-3
+    = render "categories"
 
-    .col-md-7.col-md-offset-1
-      .thumbnail
-        = image_tag @product.images, class: "img-responsive"
-        .caption-full
-          %h4.pull-right
-            = raw "&#x20B1;"
-            = @product.price
-          %h4
-            = @product.name
-          %p
-            = @product.description
-          %p
-            %strong= "Sizes:"
-            = "A0, A1, A2, A3, A4"
+  .col-sm-9
+    .thumbnail
+      = image_tag @product.images.first.image.url(:medium), class: "img-responsive"
+      .caption-full
+        %h4.pull-right
+          = raw "&#x20B1;"
+          = @product.price
+        %h4
+          = @product.name
+        %p
+          = @product.description
+        %p
+          %strong= "Sizes:"
+          = "A0, A1, A2, A3, A4"
 
-        .ratings
-          %p.pull-right
-            = "3 reviews"
-          %p
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star-empty
-            = "4.0 stars"
+      .ratings
+        %p.pull-right
+          = "3 reviews"
+        %p
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star-empty
+          = "4.0 stars"
 
-      .well
-        .text-right
-          %a.btn.btn-success 
-            = "Leave a Review"
-        %hr/
-        .row
-          .col-md-12
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star-empty
-            = "Anonymous"
-            %span.pull-right 
-              = "10 days ago"
-            %p 
-              = "This product was great in terms of quality. I would definitely buy another!"
-        %hr/
-        .row
-          .col-md-12
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star-empty
-            = "Anonymous"
-            %span.pull-right 
-              = "12 days ago"
-            %p 
-              = "I've alredy ordered another one!"
-        %hr/
-        .row
-          .col-md-12
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star-empty
-            = "Anonymous"
-            %span.pull-right 
-              = "15 days ago"
-            %p 
-              = "I've seen some better than this, but not at this price. I definitely recommend this item."
+    .well
+      .text-right
+        %a.btn.btn-success 
+          = "Leave a Review"
+      %hr/
+      .row
+        .col-md-12
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star-empty
+          = "Anonymous"
+          %span.pull-right 
+            = "10 days ago"
+          %p 
+            = "This product was great in terms of quality. I would definitely buy another!"
+      %hr/
+      .row
+        .col-md-12
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star-empty
+          = "Anonymous"
+          %span.pull-right 
+            = "12 days ago"
+          %p 
+            = "I've alredy ordered another one!"
+      %hr/
+      .row
+        .col-md-12
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star
+          %span.glyphicon.glyphicon-star-empty
+          = "Anonymous"
+          %span.pull-right 
+            = "15 days ago"
+          %p 
+            = "I've seen some better than this, but not at this price. I definitely recommend this item."
 
 
 

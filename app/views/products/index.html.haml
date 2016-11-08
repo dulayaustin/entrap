@@ -1,17 +1,14 @@
-.container
-  .row
-    .col-md-3
-      = render "categories"
+.row-fluid
+  .col-md-3
+    = render "categories"
 
-    .col-md-9
-      = render "slide_image"
+  .col-md-9
+    .row
+      .col-sm-12
+        .pull-right
+          = link_to "Add Product", new_product_path, class: "btn btn-sm btn-primary"
 
-      = render "products"
+    %br
+    = render "slide_image"
 
-
-
-
-
-
-
-
+    = render "products"
