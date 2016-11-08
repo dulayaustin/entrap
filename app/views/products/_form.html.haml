@@ -1,23 +1,18 @@
-= simple_form_for @product, html: { multipart: true } do |f|
+= simple_form_for @product, html: { multipart: true, class: "form-horizontal" } do |f|
   .form-inputs
-    .row
-      .col-md-6
-        = f.input :name, placeholder: 'Enter Product name', input_html: { class: "form-control" }
-        %br/
+    .row-fluid
+      .col-sm-6
+        = f.input :name, placeholder: 'Enter Product name'
+      .col-sm-6
+        = f.input :price, placeholder: 'Enter Price', input_html: {value: number_with_precision(f.object.price, precision: 2) }
+      .col-sm-12
+        = f.input :description, placeholder: 'Short description here', input_html: { class: "form-control" }
+      .col-sm-12
+        = f.input :category, collection: Category.for_select, include_blank: "Select a category"
+      .col-sm-12      
+        = field_set_tag 'Images' do 
+          = file_field_tag "images[]", multiple: true, type: :file
 
-      .col-md-6
-        = f.input :price, placeholder: 'Enter Price', input_html: { class: "form-control", value: number_with_precision(f.object.price, precision: 2) }
-        %br/
-
-    = f.input :description, placeholder: 'Short description here', input_html: { class: "form-control" }
-    %br/
-
-    = field_set_tag 'Images' do 
-      = file_field_tag "images[]", multiple: true, type: :file
-    %br/
-
-    = f.association :category, input_html: { multiple: false }, value_method: :id, include_blank: "Select a category"
-    %br/
-    
+  .form-actions
     = f.button :submit, "Save", class: "btn-danger"
     = link_to 'Cancel', :back, class: "btn btn-default"

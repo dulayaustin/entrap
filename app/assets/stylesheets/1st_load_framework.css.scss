@@ -7,7 +7,10 @@ img {
   @extend .img-responsive;
   margin: 0 auto;
   }
-
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -37,6 +40,17 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+.form-actions {
+  float: right;
+  margin-top: 10px
+}
+
+form {
+  legend {
+    border-bottom: none;
+  }
+}
 
 // .nav {
 //   li.current {  
