@@ -1,14 +1,16 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_category, only: :category
+  # before_action :set_category, only: :category
   before_action :set_categories, only: [:index, :category, :show]
 
   def index
     @products = Product.order("created_at DESC").page(params[:page]).per(6)
+    @sub_categories = SubCategory.where(category_id: @category)
   end
 
   def category
-    @products = @category.products.order("created_at DESC").page(params[:page]).per(6)
+    # @products = @category.products.order("created_at DESC").page(params[:page]).per(6)
+    
   end
 
   def show
@@ -54,7 +56,7 @@ class ProductsController < ApplicationController
     end
 
     def set_category
-      @category = Category.find_by(name: params[:name])
+      @category = Category.find_by(id: params[:id])
     end
 
     def set_categories
@@ -62,6 +64,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :price, :description, :category_id)
+      params.require(:product).permit(:name, :price, :description, :sub_category_id)
     end
 end

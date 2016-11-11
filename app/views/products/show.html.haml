@@ -4,7 +4,7 @@
 
   .col-sm-9
     .thumbnail
-      = image_tag @product.images.first.image.url(:medium), class: "img-responsive"
+      = image_tag @product.images.first.image.url(:large), class: "img-responsive"
       .caption-full
         %h4.pull-right
           = raw "&#x20B1;"

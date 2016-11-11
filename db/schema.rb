@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107101619) do
+ActiveRecord::Schema.define(version: 20161109033403) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -31,12 +31,20 @@ ActiveRecord::Schema.define(version: 20161107101619) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.decimal  "price",                     precision: 8, scale: 2
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.decimal  "price",                         precision: 8, scale: 2
+    t.text     "description",     limit: 65535
+    t.integer  "sub_category_id"
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.index ["sub_category_id"], name: "index_products_on_sub_category_id", using: :btree
+  end
+
+  create_table "sub_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category_id"
-    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_sub_categories_on_category_id", using: :btree
   end
 
 end
