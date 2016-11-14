@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   resources :products do
     collection do
-      get 'sub_category/:id' => 'products#sub_category', as: 'sub_category'
+      get 'category/:name' => 'products#category', as: 'category'
+      get 'sub_category/:name' => 'products#sub_category', as: 'sub_category'
     end
   end
  

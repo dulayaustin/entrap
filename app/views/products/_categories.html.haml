@@ -1,12 +1,15 @@
 %p.lead
   = "Categories"
-%ul.list-group{ class: "categories" }
+%ul.list-group
   - @categories.each do |category|
     %li.list-group-item.parent
-      = content_tag "a", category.name.titleize, id: category.id, class: "category"
+      = content_tag "a", category.name, id: category.id, class: "category"
+      / = link_to category.name, category_products_path(category.name.downcase), id: category.id, class: "category"
+      /  Use this when it is Ajaxified
+
       %ul.list-group.child{ "data-category-id" => "#{category.id}" }
         - category.sub_categories.each do |sub|
           %li.list-group-item
-            = link_to sub.name, "#"
+            = link_to sub.name, sub_category_products_path(sub.name.downcase)
 
 %hr

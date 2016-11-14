@@ -3,11 +3,11 @@ $ ->
     e.preventDefault()
     $( "#product_sub_category_id" ).prop( "disabled", false )
 
-  $(document).on "click", ".parent", (e) ->
+  $(document).on "click", ".category", (e) ->
     e.preventDefault()
-    $(".parent").not(this).removeClass("active")
-    $(this).addClass("active")    
-    id = $(this).find("a").attr("id")
+    $(this).parent().siblings().removeClass("active")
+    $(this).parent().addClass("active")    
+    id = $(this).attr("id")
     $(".child").hide()
     
     if $(".parent").hasClass("active")           

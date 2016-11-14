@@ -7,4 +7,9 @@ module ProductsHelper
       params[:name] == category.name
     end
   end
+
+  # def modify_category_name(cat)
+  #   cat_name = cat.downcase.split
+  #   cat_name.join("-")
+  # end
 end
