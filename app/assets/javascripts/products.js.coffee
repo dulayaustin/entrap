@@ -5,10 +5,12 @@ $ ->
 
   $(document).on "click", ".parent", (e) ->
     e.preventDefault()
-    $(this).toggleClass("active")    
-    id = $(this).attr("id")
-
-    if $(this).hasClass("active")
-      $('.child[data-category-id="' + id + '"]').slideDown()
-    else
-      $('.child[data-category-id="' + id + '"]').slideUp()
+    $(".parent").not(this).removeClass("active")
+    $(this).addClass("active")    
+    id = $(this).find("a").attr("id")
+    $(".child").hide()
+    
+    if $(".parent").hasClass("active")           
+      $(".child[data-category-id='#{id}']").show()
+      
+    
