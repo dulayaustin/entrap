@@ -11,7 +11,7 @@
         = f.simple_fields_for :category do |c|
           = c.input :category, collection: Category.for_select, include_blank: "Select a category"
       .col-sm-12.col-lg-6
-        = f.input :sub_category_id, collection: SubCategory.for_select, include_blank: "Select a sub category", input_html: { disabled: true }
+        = f.association :sub_category, include_blank: "Choose a category first to enable", input_html: { disabled: true }
       .col-sm-12    
         = field_set_tag 'Images' do 
           = file_field_tag "images[]", multiple: true, type: :file

@@ -3,5 +3,5 @@ class Product < ApplicationRecord
   delegate :category, to: :sub_category
   has_many :images, dependent: :destroy
 
-  
+  scope :recent, -> {order("created_at DESC")}
 end

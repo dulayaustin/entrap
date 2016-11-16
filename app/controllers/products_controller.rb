@@ -3,17 +3,17 @@ class ProductsController < ApplicationController
   before_action :set_categories, only: [:index, :category, :sub_category, :show]
 
   def index
-    @products = Product.order("created_at DESC").page(params[:page]).per(6)
+    @products = Product.includes(:images).recent.page(params[:page]).per(6)
   end
 
   def category
     @category = Category.find_by(name: params[:name])
-    @products = @category.products.order("created_at DESC").page(params[:page]).per(6)
+    @products = @category.products.includes(:images).recent.page(params[:page]).per(6)
   end
 
   def sub_category
     @sub_category = SubCategory.find_by(name: params[:name])
-    @products = @sub_category.products.order("created_at DESC").page(params[:page]).per(6)
+    @products = @sub_category.products.includes(:images).recent.page(params[:page]).per(6)
   end
 
   def show
@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
     end
 
     def set_categories
-      @categories = Category.all
+      @categories = Category.includes(:sub_categories).all
     end
 
     def product_params
