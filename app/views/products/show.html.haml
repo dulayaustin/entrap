@@ -1,10 +1,17 @@
 .row-fluid
-  .col-md-3
+  .col-sm-3
     = render "categories"
 
   .col-sm-9
     .thumbnail
-      = image_tag @product.images.first.image.url(:large), class: "img-responsive"
+      = image_tag @product.images.first.image.url(:large), class: "img-responsive main-product-image"
+      .images
+        %ul
+          - @product.images.each do |img|
+            %li
+              = link_to (image_tag img.image.url(:thumb)), "#", class: "product-image"
+              
+          
       .caption-full
         %h4.pull-right
           = raw "&#x20B1;"
@@ -34,7 +41,7 @@
           = "Leave a Review"
       %hr/
       .row
-        .col-md-12
+        .col-sm-12
           %span.glyphicon.glyphicon-star
           %span.glyphicon.glyphicon-star
           %span.glyphicon.glyphicon-star
@@ -47,7 +54,7 @@
             = "This product was great in terms of quality. I would definitely buy another!"
       %hr/
       .row
-        .col-md-12
+        .col-sm-12
           %span.glyphicon.glyphicon-star
           %span.glyphicon.glyphicon-star
           %span.glyphicon.glyphicon-star
@@ -60,7 +67,7 @@
             = "I've alredy ordered another one!"
       %hr/
       .row
-        .col-md-12
+        .col-sm-12
           %span.glyphicon.glyphicon-star
           %span.glyphicon.glyphicon-star
           %span.glyphicon.glyphicon-star

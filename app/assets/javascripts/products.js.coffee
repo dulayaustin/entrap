@@ -3,7 +3,7 @@ $ ->
     e.preventDefault()
     $(this).parent().siblings().removeClass("active")
     $(this).parent().addClass("active")    
-    id = $(this).attr("id")
+    id = $(this).attr("id")    
     $(".child").hide()
     
     if $(".parent").hasClass("active")           
@@ -34,6 +34,23 @@ $ ->
         $("#product_sub_category_id option[value='#{value}']").unwrap('<span/>')
     else
       return
+
+
+  $(window).on "load", (e) ->
+    $(".images li:first").addClass("active")
+
+  $(document).on "click", ".product-image", (e) ->
+    e.preventDefault()
+    $(".images li").removeClass("active")
+    $(this).parent().addClass("active")
+    src = $(this).children().attr("src")
+    src = src.split("/")
+    index = src.indexOf("thumb")
+    src[index] = "large"
+    src_large = src.join("/")
+    
+    $(".main-product-image").attr("src", src_large)
+
       
 
     

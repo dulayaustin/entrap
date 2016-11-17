@@ -5,6 +5,7 @@
     %title= content_for?(:title) ? yield(:title) : 'Entrap'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Entrap'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Roboto+Condensed"
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     = csrf_meta_tags
   %body{class: "#{controller.controller_name}"}
