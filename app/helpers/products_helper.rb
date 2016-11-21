@@ -12,4 +12,14 @@ module ProductsHelper
   #   cat_name = cat.downcase.split
   #   cat_name.join("-")
   # end
+
+  def bulleted_description(description)
+    details = description.split
+    content_tag :ul, class: "description" do    
+      details.each do |d|
+        concat(content_tag(:li, d))
+      end
+    end
+  end
+
 end

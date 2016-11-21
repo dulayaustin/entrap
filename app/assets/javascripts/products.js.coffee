@@ -36,9 +36,6 @@ $ ->
       return
 
 
-  $(window).on "load", (e) ->
-    $(".images li:first").addClass("active")
-
   $(document).on "click", ".product-image", (e) ->
     e.preventDefault()
     $(".images li").removeClass("active")

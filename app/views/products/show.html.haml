@@ -7,9 +7,13 @@
       = image_tag @product.images.first.image.url(:large), class: "img-responsive main-product-image"
       .images
         %ul
-          - @product.images.each do |img|
-            %li
-              = link_to (image_tag img.image.url(:thumb)), "#", class: "product-image"
+          - @product.images.each_with_index do |img, index|
+            - if(index == 0)
+              %li.active
+                = link_to (image_tag img.image.url(:thumb)), "#", class: "product-image"
+            - else
+              %li
+                = link_to (image_tag img.image.url(:thumb)), "#", class: "product-image"
               
           
       .caption-full
@@ -18,8 +22,8 @@
           = @product.price
         %h4
           = @product.name
-        %p
-          = @product.description
+        .details
+          = bulleted_description(@product.description)  
         %p
           %strong= "Sizes:"
           = "A0, A1, A2, A3, A4"

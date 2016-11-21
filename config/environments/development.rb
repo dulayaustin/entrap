@@ -69,4 +69,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   Paperclip.options[:command_path] = "/usr/local/bin/convert"
+
+  config.serve_static_assets = false
+  
 end
