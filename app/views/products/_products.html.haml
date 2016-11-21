@@ -4,9 +4,9 @@
       .thumbnail
         = link_to product do
           - if product.images.present?
-            = image_tag product.images.first.image.url(:medium), class: "img-responsive"
+            = image_tag product.images.first.image.url(:medium), class: "img-responsive products-images"
           - else
-            = image_tag product.images.first.image.url(), class: "img-responsive"
+            = image_tag product.images.first.image.url(), class: "img-responsive products-images"
         .caption
           %h4.pull-right
             = number_to_currency(product.price, unit: "₱")

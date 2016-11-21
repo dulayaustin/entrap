@@ -30,13 +30,10 @@ body {
     white-space: nowrap;
 }
 
-/*.thumbnail img.product-image {
-    width: 100%;
-    min-height: 260px;
-    max-height: 440px;
-    height: 260px;
+.thumbnail img.products-images {
+    padding: 5px;
 }
-*/
+
 .ratings {
     padding-right: 10px;
     padding-left: 10px;
@@ -47,9 +44,10 @@ body {
     padding: 0;
 }
 
-.thumbnail .caption-full {
+.thumbnail .caption {
     padding: 9px;
     color: #333;
+    padding-top: 0;
 }
 
 footer {
