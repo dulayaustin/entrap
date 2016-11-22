@@ -6,7 +6,7 @@
       .col-sm-6
         = f.input :price, placeholder: 'Enter Price', input_html: {value: number_with_precision(f.object.price, precision: 2) }
       .col-sm-12
-        = f.input :description, placeholder: 'Short description here', input_html: { class: "form-control" }
+        = f.input :description, placeholder: 'Short description here', input_html: { class: "form-control" , data: {provider: "summernote"}}
       .col-sm-12.col-lg-6  
         = f.simple_fields_for :category do |c|
           = c.input :category, collection: Category.for_select, include_blank: "Select a category"
