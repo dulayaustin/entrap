@@ -13,6 +13,7 @@ gem 'autoprefixer-rails'
 gem "paperclip"
 gem 'simple_form'
 gem 'kaminari'
+gem 'summernote-rails'
 group :development, :test do
   gem 'byebug', platform: :mri
 end

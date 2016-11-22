@@ -1,6 +1,7 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "summernote";
 
 // make all images responsive by default
 img {
@@ -111,11 +112,7 @@ a:hover {
   background-color: transparent;
   border: 0px;
 }
+.navbar-inverse .navbar-nav > li.current > a {
+  color: #c82b22;  
+}
 
-
-
-// .nav {
-//   li.current {  
-//     color: #e9453c !important;
-//   }
-// }

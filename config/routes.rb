@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'contact' => 'contact#index', as: 'contact' 
-  get 'about' => 'about#index', as: 'about'
+  # get 'contact' => 'contact#index', as: 'contact' 
+  # get 'about' => 'about#index', as: 'about'
 
   resources :products do
     collection do
@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get 'sub_category/:name' => 'products#sub_category', as: 'sub_category'
     end
   end
+
+  resources :about, only: [:index, :edit, :update]
+  resources :contact, only: [:index, :edit, :update]
  
   root to: 'products#index'
 end

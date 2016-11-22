@@ -1,12 +1,5 @@
 .container
-  %h3= "You may contact us:"
-  %p 
-    = "0999-999-99-99 (Globe)"
-    %br/
-    = "0900-000-00-00 (Smart)"
-
-  %p
-    %strong
-      = "Facebook Page:"
-    = "Entrap FightGear"
-
+  .pull-right= link_to "Edit Content", edit_contact_path(@contact), class: "btn btn-sm btn-primary"
+  %h3= "Contact"
+  .content
+    = @contact.content.html_safe
