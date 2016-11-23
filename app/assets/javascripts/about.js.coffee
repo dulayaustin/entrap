@@ -3,5 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('[data-provider="summernote"]').each ->
-    $(this).summernote()
+  $(document).on "turbolinks:load", ->
+
+    $('[data-provider="summernote"]').each ->
+      $(this).summernote({minHeight: 200})

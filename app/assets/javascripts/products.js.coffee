@@ -1,4 +1,7 @@
 $ ->
+  $(document).on "turbolinks:load", ->
+    $(".images li:first").addClass("active")
+
   $(document).on "click", ".category", (e) ->
     e.preventDefault()
     $(this).parent().siblings().removeClass("active")

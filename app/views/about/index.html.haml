@@ -1,5 +1,7 @@
 .container
-  .pull-right= link_to "Edit Content", edit_about_path(@about), class: "btn btn-sm btn-primary"
-  %h3= "About Us"
-  .content
-    = @about.content.html_safe
+  .row-fluid
+    .col-sm-12
+      .pull-right= link_to "Edit Content", edit_about_path(@about), class: "btn btn-sm btn-primary"
+      %h2= "About Us"
+      .content
+        = @about.content.html_safe

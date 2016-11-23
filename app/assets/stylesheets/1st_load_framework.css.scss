@@ -46,6 +46,7 @@ section {
 body {
   font-family: Roboto Condensed, 'Open Sans', sans-serif;
   font-size: 15px; 
+  background-color: #f9f9f9;
 }
 
 ul.nav.navbar-nav {
@@ -114,5 +115,11 @@ a:hover {
 }
 .navbar-inverse .navbar-nav > li.current > a {
   color: #c82b22;  
+}
+
+.note-editable, .description, .content {
+  ul {
+    list-style-type: disc;
+  }
 }
 

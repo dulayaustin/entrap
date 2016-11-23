@@ -1,0 +1,13 @@
+= simple_form_for @fight_team, html: { class: "form-horizontal" } do |f|
+  .form-inputs
+    .row-fluid
+      .col-sm-6
+        = f.input :picture, as: :file
+      .col-sm-6
+        = f.input :name, placeholder: 'Enter Fighter name'
+      .col-sm-12
+        = f.input :description, as: :summernote
+
+  .form-actions
+    = f.button :submit, "Save", class: "btn-danger"
+    = link_to "Cancel", :back, class: "btn btn-default"
