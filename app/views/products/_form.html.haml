@@ -15,6 +15,11 @@
       .col-sm-12    
         = field_set_tag 'Images' do 
           = file_field_tag "images[]", multiple: true, type: :file
+      .col-sm-12
+        #preview.clearfix
+          - if @product.images.present?
+            - @product.images.each do |img|
+              = image_tag img.image.url(:thumb)
 
   .form-actions
     = f.button :submit, "Save", class: "btn-danger"

@@ -2,9 +2,13 @@
   .form-inputs
     .row-fluid
       .col-sm-6
-        = f.input :picture, as: :file
-      .col-sm-6
         = f.input :name, placeholder: 'Enter Fighter name'
+      .col-sm-6
+        = f.input :picture, as: :file      
+      .col-sm-12
+        #preview.clearfix
+          - if @fight_team.picture.present?
+            = image_tag @fight_team.picture.url(:thumb), class: "img-responsive"
       .col-sm-12
         = f.input :description, as: :summernote
 

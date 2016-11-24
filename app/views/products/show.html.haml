@@ -10,7 +10,7 @@
           %ul
             - @product.images.each do |img|           
               %li
-                = link_to (image_tag img.image.url(:thumb)), "#", class: "product-image"
+                = link_to (image_tag img.image.url(:small)), "#", class: "product-image"
                           
         .caption-full
           %h4.pull-right
