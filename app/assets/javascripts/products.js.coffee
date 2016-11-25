@@ -45,7 +45,7 @@ $ ->
     $(this).parent().addClass("active")
     src = $(this).children().attr("src")
     src = src.split("/")
-    index = src.indexOf("thumb")
+    index = src.indexOf("small")
     src[index] = "large"
     src_large = src.join("/")
     
