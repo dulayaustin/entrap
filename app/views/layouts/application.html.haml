@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Entrap'
+    %title= content_for?(:title) ? yield(:title) : 'Entrap FightGear'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Entrap'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Roboto+Condensed"
@@ -14,7 +14,9 @@
 
     %main{:role => "main"}
       = render 'layouts/messages'
-      = yield
+      .container
+        .row-fluid
+          = yield
 
     .container
       %hr

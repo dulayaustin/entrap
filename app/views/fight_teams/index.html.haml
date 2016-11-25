@@ -1,20 +1,20 @@
-.container
-  .row-fluid
-    .col-sm-12
-      .pull-right= link_to "Add Fighter", new_fight_team_path, class: "btn btn-sm btn-primary"
-      %h2= "The Fight Team"
-      %article
-        - @fight_teams.each do |fight_team|
-          .fighter.clearfix
-            .pull-right
-              = link_to edit_fight_team_path(fight_team) do
-                %span.glyphicon.glyphicon-edit{ title: "Edit this fighter" }
-              |
-              = link_to fight_team, method: :delete, data: { confirm: "Are you sure you want to remove this fighter?" } do
-                %span.glyphicon.glyphicon-remove{ title: "Remove this fighter" }
-            .picture
-              = image_tag fight_team.picture.url(:large), class: "img-responsive"
-            .description
-              %h3= fight_team.name.titleize
-              %p= fight_team.description.html_safe
+- page_title(["The Fight Team"])
+.col-sm-12
+  %header
+    .pull-right= link_to "Add Fighter", new_fight_team_path, class: "btn btn-sm btn-primary"
+    %h2= "The Fight Team"
+  %article
+    - @fight_teams.each do |fight_team|
+      .fighter.clearfix
+        .pull-right
+          = link_to edit_fight_team_path(fight_team) do
+            %span.glyphicon.glyphicon-edit{ title: "Edit this fighter" }
+          |
+          = link_to fight_team, method: :delete, data: { confirm: "Are you sure you want to remove this fighter?" } do
+            %span.glyphicon.glyphicon-remove{ title: "Remove this fighter" }
+        .picture
+          = image_tag fight_team.picture.url(:large), class: "img-responsive"
+        .description
+          %h3= fight_team.name.titleize
+          %p= fight_team.description.html_safe
         

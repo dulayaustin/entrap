@@ -1,14 +1,13 @@
-.container
-  .row-fluid
-    .col-sm-12
-      %h2= "Edit Contact page"
+- page_title(["Edit Contact"])
+.col-sm-12
+  %h2= "Edit Contact page"
 
-      = simple_form_for :contact, url: contact_path(@contact), method: :patch do |f|
-        .form-inputs
-          .row-fluid
-            .col-sm-12
-              = f.input :content, as: :summernote
+  = simple_form_for :contact, url: contact_path(@contact), method: :patch do |f|
+    .form-inputs
+      .row-fluid
+        .col-sm-12
+          = f.input :content, as: :summernote
 
-        .form-actions
-          = f.button :submit, "Save", class: "btn-danger"
-          = link_to 'Cancel', :back, class: "btn btn-default"
+    .form-actions
+      = f.button :submit, "Save", class: "btn-danger"
+      = link_to 'Cancel', :back, class: "btn btn-default"

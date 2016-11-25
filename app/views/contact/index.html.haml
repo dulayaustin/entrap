@@ -1,7 +1,7 @@
-.container
-  .row-fluid
-    .col-sm-12
-      .pull-right= link_to "Edit Content", edit_contact_path(@contact), class: "btn btn-sm btn-primary"
-      %h2= "Contact"
-      .content
-        = @contact.content.html_safe
+- page_title(["Contact"])
+.col-sm-12
+  %header
+    .pull-right= link_to "Edit Content", edit_contact_path(@contact), class: "btn btn-sm btn-primary"
+    %h2= "Contact"
+  .content
+    = @contact.content.html_safe
