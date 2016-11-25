@@ -10,7 +10,7 @@ class FightTeamsController < ApplicationController
 
   def update
     if @fight_team.update(fight_team_params)
-      redirect_to fight_teams_path, notice: "Fighter #{@fight_team.name.titleize} was successfully updated"
+      redirect_to fight_teams_path, notice: "Fighter #{@fight_team.name.titleize} was successfully updated."
     else
       render :edit
     end
@@ -24,7 +24,7 @@ class FightTeamsController < ApplicationController
     @fight_team = FightTeam.new(fight_team_params)
 
     if @fight_team.save
-      redirect_to fight_teams_path, notice: "New fighter was successfully added"
+      redirect_to fight_teams_path, notice: "New fighter was successfully added."
     else
       render :new
     end
@@ -32,7 +32,7 @@ class FightTeamsController < ApplicationController
 
   def destroy
     @fight_team.destroy
-    redirect_to fight_teams_path, notice: "Fighter named #{@fight_team.name.titleize} was being removed"
+    redirect_to fight_teams_path, notice: "Fighter named #{@fight_team.name.titleize} was being removed."
   end
 
   private

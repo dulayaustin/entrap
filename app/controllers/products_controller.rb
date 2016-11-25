@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path(@product), notice: 'Product was successfully updated.'
+      redirect_to product_path(@product), notice: "Product #{@product.name.titleize} was successfully updated."
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_url
+    redirect_to products_url, notice: "Product #{@product.name.titleize} was being deleted."
   end
 
   private

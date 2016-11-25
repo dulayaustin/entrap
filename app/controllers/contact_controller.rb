@@ -1,5 +1,6 @@
 class ContactController < ApplicationController
   before_action :set_contact, only: [:edit, :update]
+  
   def index
     @contact = Page.find_by(area: "contact_us")
   end
