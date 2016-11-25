@@ -52,6 +52,7 @@ body {
 .thumbnail .caption-full {
     padding: 9px;
     color: #333;
+    padding-top: 0;
 }
 
 footer {

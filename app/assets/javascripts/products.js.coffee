@@ -49,7 +49,7 @@ $ ->
     src[index] = "large"
     src_large = src.join("/")
     
-    $(".main-product-image").attr("src", src_large)
+    $(".main-product-image img").attr("src", src_large)
 
       
 

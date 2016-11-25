@@ -8,14 +8,15 @@
           - else
             = image_tag product.images.first.image.url(), class: "img-responsive products-images"
         .caption
-          %h4.pull-right
-            = number_to_currency(product.price, unit: "₱")
-
           %h4
             = link_to product.name, product
-          = link_to "Edit", edit_product_path(product)
-          |
-          = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure you want to delete this product?' }               
+            %span.pull-right
+              = price_with_unit(product.price)
+
+          .actions    
+            = link_to "Edit", edit_product_path(product)
+            |
+            = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure you want to delete this product?' }               
         .ratings
           %p.pull-right
             = "16 reviews"
