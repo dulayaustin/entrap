@@ -3,7 +3,9 @@
     .row-fluid
       .col-sm-6
         = f.input :name, placeholder: 'Enter Product name'
-      .col-sm-6
+      .col-sm-4
+        = f.input :color, placeholder: 'Enter Color'
+      .col-sm-2
         = f.input :price, placeholder: 'Enter Price', input_html: {value: number_with_precision(f.object.price, precision: 2) }
       .col-sm-12
         = f.input :description, as: :summernote
