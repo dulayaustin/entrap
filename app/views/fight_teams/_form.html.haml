@@ -8,7 +8,12 @@
       .col-sm-12
         #preview.clearfix
           - if @fight_team.picture.present?
-            = image_tag @fight_team.picture.url(:thumb), class: "img-responsive"
+            %fieldset.current
+              %legend= "Current image"
+              = image_tag @fight_team.picture.url(:thumb), class: "img-responsive"
+          %fieldset.upload
+            %legend= "Uploaded image"
+
       .col-sm-12
         = f.input :description, as: :summernote
 

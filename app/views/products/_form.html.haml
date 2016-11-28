@@ -15,13 +15,17 @@
       .col-sm-12.col-lg-6
         = f.association :sub_category, include_blank: "Choose a category first to enable", input_html: { disabled: true }
       .col-sm-12    
-        = field_set_tag 'Images' do 
-          = file_field_tag "images[]", multiple: true, type: :file
+        = f.label :images 
+        = file_field_tag "images[]", multiple: true, type: :file
       .col-sm-12
         #preview.clearfix
           - if @product.images.present?
-            - @product.images.each do |img|
-              = image_tag img.image.url(:thumb)
+            %fieldset.current
+              %legend= "Current Images"            
+              - @product.images.each do |img|
+                = image_tag img.image.url(:thumb)
+          %fieldset.upload
+            %legend= "Uploaded images"
 
   .form-actions
     = f.button :submit, "Save", class: "btn-danger"

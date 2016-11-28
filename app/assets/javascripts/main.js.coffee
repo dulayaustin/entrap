@@ -11,7 +11,7 @@ $ ->
         reader.onload = (file) ->
           img = new Image
           img.src = file.target.result
-          $('#preview').append(img)
-          $('#preview img').addClass("img-responsive")
+          $('fieldset.upload').css('display', 'inline-block').append(img)
+
 
         reader.readAsDataURL value

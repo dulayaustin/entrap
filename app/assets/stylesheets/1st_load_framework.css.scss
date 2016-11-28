@@ -70,12 +70,6 @@ ul.nav.navbar-nav {
   margin-top: 10px;
 }
 
-form {
-  legend {
-    border-bottom: none;
-  }
-}
-
 ul {
   list-style-type: none;
 }
@@ -125,6 +119,25 @@ a:hover {
 
 #preview {
   margin-top: 9px;
+
+  fieldset {
+    border: 1px dashed #333;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+    display: inline-block;
+
+    legend {
+      border: 0px;
+      margin-bottom: 5px;
+      width: inherit;
+      padding-left: 2px;
+      padding-right: 2px;
+    }  
+  }
+
+  fieldset.upload {
+    display: none;
+  }
 
   img {
     width: 150px;
