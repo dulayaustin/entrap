@@ -1,12 +1,8 @@
 class AboutController < ApplicationController
-  before_action :set_about, only: [:edit, :update]
+  before_action :set_about, only: :update
 
   def index
     @about = Page.find_by(area: "about_us")
-  end
-
-  def edit
-
   end
 
   def update
@@ -23,6 +19,6 @@ class AboutController < ApplicationController
     end
 
     def about_params
-      params.require(:about).permit(:content)
+      params.require(:page).permit(:content)
     end
 end

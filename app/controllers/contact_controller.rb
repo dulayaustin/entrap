@@ -1,12 +1,8 @@
 class ContactController < ApplicationController
-  before_action :set_contact, only: [:edit, :update]
+  before_action :set_contact, only: :update
   
   def index
     @contact = Page.find_by(area: "contact_us")
-  end
-
-  def edit
-
   end
 
   def update
@@ -23,6 +19,6 @@ class ContactController < ApplicationController
     end
 
     def contact_params
-      params.require(:contact).permit(:content)
+      params.require(:page).permit(:content)
     end
 end

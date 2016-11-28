@@ -6,7 +6,7 @@
   %article#container-fight-team
     = render @fight_teams
 
-.col-sm-12
+.row
   / ajax issue on uploading image, InvalidAuthenticityToken, remote: true
   = simple_form_for @fight_team, html: { class: "form-horizontal" } do |f|
     #new-fighter-modal.modal.fade{"aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
