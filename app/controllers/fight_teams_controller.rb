@@ -1,11 +1,9 @@
 class FightTeamsController < ApplicationController
-  before_action :set_fight_team, only: [:edit, :update, :destroy]
+  before_action :set_fight_team, only: [:update, :destroy]
 
   def index
     @fight_teams = FightTeam.order("created_at DESC")
-  end
-
-  def edit
+    @fight_team = FightTeam.new
   end
 
   def update
@@ -16,17 +14,17 @@ class FightTeamsController < ApplicationController
     end
   end
 
-  def new
-    @fight_team = FightTeam.new
-  end
-
   def create
     @fight_team = FightTeam.new(fight_team_params)
 
-    if @fight_team.save
-      redirect_to fight_teams_path, notice: "New fighter was successfully added."
-    else
-      render :new
+    respond_to do |format|
+      if @fight_team.save
+        format.html { redirect_to fight_teams_path, notice: "New fighter was successfully added." }
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
     end
   end
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :about, only: [:index, :edit, :update]
   resources :contact, only: [:index, :edit, :update]
-  resources :fight_teams, except: :show
+  resources :fight_teams, only: [:index, :create, :update, :destroy]
  
   root to: 'products#index'
 end
