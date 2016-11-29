@@ -11,33 +11,33 @@
     %h3= fight_team.name.titleize
     %p= fight_team.description.html_safe
 
-.row
-  = simple_form_for fight_team, method: :patch, html: { class: "form-horizontal" } do |f|
-    .modal.fade{"aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", id: "edit-fighter-modal-#{ fight_team.id }"}
-      .modal-dialog{role: "document"}
-        .modal-content
-          .modal-header
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
-              %span{"aria-hidden" => "true"} ×
-            %h4#myModalLabel.modal-title= "Edit Fighter"
-          .modal-body
-            .row-fluid
-              .col-sm-6
-                = f.input :name, placeholder: 'Enter Fighter name'
-              .col-sm-6
-                = f.input :picture, as: :file      
-            #preview.clearfix
-              .col-sm-12
-                - if fight_team.picture.present?
-                  %fieldset.current
-                    %legend= "Current image"
-                    = image_tag fight_team.picture.url(:thumb), class: "img-responsive"
-                %fieldset.upload
-                  %legend= "Uploaded image"
-              .col-sm-12
-                = f.input :description, as: :summernote
-            
-          .modal-footer
-            = f.button :submit, "Save changes", class: "btn-danger"
-            = link_to "Cancel", "#", class: "btn btn-default", "data-dismiss" => "modal"
+  .row
+    = simple_form_for fight_team, method: :patch, html: { class: "form-horizontal" } do |f|
+      .modal.fade{"aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", id: "edit-fighter-modal-#{ fight_team.id }"}
+        .modal-dialog{role: "document"}
+          .modal-content
+            .modal-header
+              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+                %span{"aria-hidden" => "true"} ×
+              %h4#myModalLabel.modal-title= "Edit Fighter"
+            .modal-body
+              .row-fluid
+                .col-sm-6
+                  = f.input :name, placeholder: 'Enter Fighter name'
+                .col-sm-6
+                  = f.input :picture, as: :file      
+              #preview.clearfix
+                .col-sm-12
+                  - if fight_team.picture.present?
+                    %fieldset.current
+                      %legend= "Current image"
+                      = image_tag fight_team.picture.url(:thumb), class: "img-responsive"
+                  %fieldset.upload
+                    %legend= "Uploaded image"
+                .col-sm-12
+                  = f.input :description, as: :summernote
+              
+            .modal-footer
+              = f.button :submit, "Save changes", class: "btn-danger"
+              = link_to "Cancel", "#", class: "btn btn-default", "data-dismiss" => "modal"
 
