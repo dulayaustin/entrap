@@ -6,10 +6,13 @@ class AboutController < ApplicationController
   end
 
   def update
-    if @about.update(about_params)
-      redirect_to about_index_path(@about), notice: 'About Us page was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @about.update(about_params)
+        format.html { redirect_to about_index_path(@about), notice: 'About Us page was successfully updated.' }
+        format.js
+      else
+        format.html { render :edit }
+      end
     end
   end
 

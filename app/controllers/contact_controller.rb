@@ -6,10 +6,13 @@ class ContactController < ApplicationController
   end
 
   def update
-    if @contact.update(contact_params)
-      redirect_to contact_index_path(@contact), notice: 'Contact page was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @contact.update(contact_params)
+        format.html { redirect_to contact_index_path(@contact), notice: 'Contact page was successfully updated.' }
+        format.js
+      else
+        format.html { render :edit }
+      end
     end
   end
 
