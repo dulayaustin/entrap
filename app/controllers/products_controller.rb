@@ -24,6 +24,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @sub_categories = SubCategory.all
+
+    if params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @sub_categories_collection = category.sub_categories
+    end
   end
 
   def create

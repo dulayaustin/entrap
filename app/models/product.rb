@@ -3,4 +3,8 @@ class Product < ApplicationRecord
   has_many :images, dependent: :destroy
 
   scope :recent, -> {order("created_at DESC")}
+
+  def self.for_select
+    self.all.collect {|x| [x.name, x.id]}
+  end
 end

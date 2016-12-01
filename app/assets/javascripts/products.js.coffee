@@ -16,27 +16,12 @@ $ ->
   $(document).on "change", "#product_category_category", (e) ->
     e.preventDefault()
     $("#product_sub_category_id").prop("disabled", false)
-    $("#product_sub_category_id option").wrap('<span/>')
-    val = $(this).val()
-    
-    if val == "1"
-      sub_val = [3, 2, 1]        
-      $.each sub_val, (index, value) ->
-        $("#product_sub_category_id option[value='#{value}']").unwrap('<span/>')
-    else if val == "2"
-      sub_val = [5, 4]        
-      $.each sub_val, (index, value) ->
-        $("#product_sub_category_id option[value='#{value}']").unwrap('<span/>')
-    else if val == "3"
-      sub_val = [7, 6]        
-      $.each sub_val, (index, value) ->
-        $("#product_sub_category_id option[value='#{value}']").unwrap('<span/>')
-    else if val == "4"
-      sub_val = [9, 8]        
-      $.each sub_val, (index, value) ->
-        $("#product_sub_category_id option[value='#{value}']").unwrap('<span/>')
-    else
-      return
+    $.ajax
+      type: "GET"
+      url: "/products/new"
+      dataType: "script"
+      data: 
+        category_id: $(this).val()
 
 
   $(document).on "click", ".product-image", (e) ->

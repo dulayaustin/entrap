@@ -1,4 +1,4 @@
-= simple_form_for @product, html: { multipart: true, class: "form-horizontal" } do |f|
+= simple_form_for @product, remote: true, html: { multipart: true, class: "form-horizontal" } do |f|
   .form-inputs
     .row-fluid
       .col-sm-6
@@ -12,8 +12,8 @@
       .col-sm-12.col-lg-6  
         = f.simple_fields_for :category do |c|
           = c.input :category, collection: Category.for_select, include_blank: "Select a category"
-      .col-sm-12.col-lg-6
-        = f.association :sub_category, include_blank: "Choose a category first to enable", input_html: { disabled: true }
+      .col-sm-12.col-lg-6#sub_category_container    
+        = render partial: "products/select_sub_categories", locals: { f: f }, object: @sub_categories
       .col-sm-12    
         = f.label :images 
         = file_field_tag "images[]", multiple: true, type: :file
