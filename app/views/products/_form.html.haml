@@ -11,7 +11,11 @@
         = f.input :description, as: :summernote
       .col-sm-12.col-lg-6  
         = f.simple_fields_for :category do |c|
-          = c.input :category, collection: Category.for_select, include_blank: "Select a category"
+          - if @product.sub_category.present?
+            = c.input :category, collection: Category.for_select, selected: @category.id, include_blank: false
+          - else
+            = c.input :category, collection: Category.for_select, include_blank: "Select a category"
+            
       .col-sm-12.col-lg-6#sub_category_container    
         = render "products/select_sub_categories", collection: []
       .col-sm-12    

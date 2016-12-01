@@ -5,7 +5,4 @@ class SubCategory < ApplicationRecord
   has_many :sub_category_sizes
   has_many :sizes, through: :sub_category_sizes, source: :size
   
-  def self.for_select
-    self.all.collect {|x| [x.name, x.id]}
-  end
 end

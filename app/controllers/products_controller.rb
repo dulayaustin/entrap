@@ -20,11 +20,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @category = @product.sub_category.category
+    @sub_categories = @category.sub_categories
   end
 
   def new
     @product = Product.new
-    @sub_categories = SubCategory.all
 
     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
