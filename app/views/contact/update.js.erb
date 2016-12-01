@@ -1,0 +1,8 @@
+$("#edit-contanct-modal").modal("hide");
+
+$("#contact").fadeOut(500, function(){
+
+  $(this).remove();
+  $(".content").html("<%= j render 'content' %>");
+
+});

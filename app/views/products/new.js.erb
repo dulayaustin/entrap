@@ -1,0 +1,2 @@
+$("#new_product").html("<%= render 'form' %>");
+$("#sub_category_container").html("<%= j render partial: 'products/select_sub_categories', locals: { f: f }, object: @sub_categories_collection %>");

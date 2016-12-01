@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122060315) do
+ActiveRecord::Schema.define(version: 20161129090318) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fight_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "description",          limit: 65535
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -43,7 +54,14 @@ ActiveRecord::Schema.define(version: 20161122060315) do
     t.integer  "sub_category_id"
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
+    t.string   "color"
     t.index ["sub_category_id"], name: "index_products_on_sub_category_id", using: :btree
+  end
+
+  create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "measurement"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "sub_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,4 +72,15 @@ ActiveRecord::Schema.define(version: 20161122060315) do
     t.index ["category_id"], name: "index_sub_categories_on_category_id", using: :btree
   end
 
+  create_table "sub_category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "sub_category_id"
+    t.integer  "size_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["size_id"], name: "index_sub_category_sizes_on_size_id", using: :btree
+    t.index ["sub_category_id"], name: "index_sub_category_sizes_on_sub_category_id", using: :btree
+  end
+
+  add_foreign_key "sub_category_sizes", "sizes"
+  add_foreign_key "sub_category_sizes", "sub_categories"
 end

@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :about, only: [:index, :edit, :update]
-  resources :contact, only: [:index, :edit, :update]
+  resources :about, only: [:index, :update]
+  resources :contact, only: [:index, :update]
+  resources :fight_teams, only: [:index, :create, :update, :destroy]
  
   root to: 'products#index'
 end

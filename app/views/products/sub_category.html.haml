@@ -1,14 +1,14 @@
-.row-fluid
-  .col-sm-3
-    = render "categories"
+- page_title(["#{@sub_category.name}", "#{@sub_category.category.name}"])
+.col-sm-3
+  = render "categories"
 
-  .col-sm-9
-    .row
-      .col-sm-12
-        .pull-right
-          = link_to "Add Product", new_product_path, class: "btn btn-sm btn-primary"
+.col-sm-9
+  .row
+    .col-sm-12
+      .pull-right
+        = link_to "Add Product", new_product_path, class: "btn btn-sm btn-primary"
 
-    %br
-    = render "slide_image"
+  %br
+  = render "slide_image"
 
-    = render "products"
+  = render "products"

@@ -1,0 +1,36 @@
+- page_title(["The Fight Team"])
+.col-sm-12
+  %header
+    .pull-right= link_to "Add Fighter", "#", class: "btn btn-sm btn-primary", "data-toggle" => "modal", "data-target" => "#new-fighter-modal"
+    %h2= "The Fight Team"
+  %article#container-fight-team
+    = render @fight_teams
+
+.row
+  / ajax issue on uploading image, InvalidAuthenticityToken, remote: true
+  = simple_form_for @fight_team, html: { class: "form-horizontal" } do |f|
+    #new-fighter-modal.modal.fade{"aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-dialog{role: "document"}
+        .modal-content
+          .modal-header
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4#myModalLabel.modal-title= "New Fighter"
+          .modal-body
+            .row-fluid
+              .col-sm-6
+                = f.input :name, placeholder: 'Enter Fighter name'
+              .col-sm-6
+                = f.input :picture, as: :file      
+            #preview.clearfix
+              .col-sm-12
+                %fieldset.upload
+                  %legend= "Uploaded image"
+              .col-sm-12
+                = f.input :description, as: :summernote
+            
+          .modal-footer
+            = f.button :submit, "Save", class: "btn-danger"
+            = link_to "Cancel", "#", class: "btn btn-default", "data-dismiss" => "modal"
+
+        

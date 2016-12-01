@@ -1,6 +1,7 @@
 %li{ class: active_class(root_url) }
   = link_to "Products", root_url
-%li= link_to "The Fight Team", "#"
+%li{ class: active_class(fight_teams_path) }
+  = link_to "The Fight Team", fight_teams_path
 %li= link_to "Events", "#"
 %li{ class: active_class(about_index_path) }
   = link_to "About Us", about_index_path

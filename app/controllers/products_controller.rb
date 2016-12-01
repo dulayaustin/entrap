@@ -24,6 +24,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @sub_categories = SubCategory.all
+
+    if params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @sub_categories_collection = category.sub_categories
+    end
   end
 
   def create
@@ -42,7 +48,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path(@product), notice: 'Product was successfully updated.'
+      redirect_to product_path(@product), notice: "Product #{@product.name.titleize} was successfully updated."
     else
       render :edit
     end
@@ -50,7 +56,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_url
+    redirect_to products_url, notice: "Product #{@product.name.titleize} was being deleted."
   end
 
   private
@@ -63,6 +69,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :price, :description, :sub_category_id)
+      params.require(:product).permit(:name, :price, :description, :sub_category_id, :color)
     end
 end

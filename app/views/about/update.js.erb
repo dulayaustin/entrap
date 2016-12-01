@@ -1,0 +1,8 @@
+$("#edit-about-us-modal").modal("hide");
+
+$("#about-us").fadeOut(500, function(){
+
+  $(this).remove();
+  $(".content").html("<%= j render 'content' %>");
+
+});

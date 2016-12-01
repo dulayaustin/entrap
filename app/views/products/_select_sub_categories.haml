@@ -1,0 +1,1 @@
+= f.input :sub_category_id, collection: @sub_categories_collection ? @sub_categories_collection.for_select : @sub_categories, include_blank: "Choose a category first to enable", input_html: { disabled: true }

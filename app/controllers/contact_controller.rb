@@ -1,18 +1,18 @@
 class ContactController < ApplicationController
-  before_action :set_contact, only: [:edit, :update]
+  before_action :set_contact, only: :update
+  
   def index
     @contact = Page.find_by(area: "contact_us")
   end
 
-  def edit
-
-  end
-
   def update
-    if @contact.update(contact_params)
-      redirect_to contact_index_path(@contact), notice: 'Contact page was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @contact.update(contact_params)
+        format.html { redirect_to contact_index_path(@contact), notice: 'Contact page was successfully updated.' }
+        format.js
+      else
+        format.html { render :edit }
+      end
     end
   end
 
@@ -22,6 +22,6 @@ class ContactController < ApplicationController
     end
 
     def contact_params
-      params.require(:contact).permit(:content)
+      params.require(:page).permit(:content)
     end
 end

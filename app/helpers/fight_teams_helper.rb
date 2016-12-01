@@ -1,0 +1,2 @@
+module FightTeamsHelper
+end
