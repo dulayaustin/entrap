@@ -95,10 +95,9 @@ a:hover {
   margin-bottom: 0;
 }
 
-.parent.active {
-  .category {
-    color: #990c16;
-  }
+.parent.active .category,
+.child .active #sub-category {  
+  color: #990c16; 
 }
 
 .list-group-item.active, 

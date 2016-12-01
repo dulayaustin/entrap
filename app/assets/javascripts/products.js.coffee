@@ -36,6 +36,12 @@ $ ->
     
     $(".main-product-image img").attr("src", src_large)
 
-      
+
+  $(document).on "click", "#sub-category", (e) ->
+    e.preventDefault()
+    $(this).parent().siblings().removeClass("active")
+    $(this).parent().addClass("active")
+    
+
 
     
