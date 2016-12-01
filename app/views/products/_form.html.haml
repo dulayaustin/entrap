@@ -13,7 +13,7 @@
         = f.simple_fields_for :category do |c|
           = c.input :category, collection: Category.for_select, include_blank: "Select a category"
       .col-sm-12.col-lg-6#sub_category_container    
-        = render partial: "products/select_sub_categories", locals: { f: f }, object: @sub_categories
+        = render "products/select_sub_categories", collection: []
       .col-sm-12    
         = f.label :images 
         = file_field_tag "images[]", multiple: true, type: :file

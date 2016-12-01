@@ -1,2 +1,1 @@
-$("#new_product").html("<%= render 'form' %>");
-$("#sub_category_container").html("<%= j render partial: 'products/select_sub_categories', locals: { f: f }, object: @sub_categories_collection %>");
+$("#sub_category_container").html("<%= escape_javascript(render 'products/select_sub_categories', collection: @sub_categories_collection) %>")
