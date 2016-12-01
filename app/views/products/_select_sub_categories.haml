@@ -2,8 +2,12 @@
 
 .form-group.select.product_sub_category_id.optional
   %label.select.optional.control-label{for: "product_sub_category_id"}
-    Sub category
+    = "Sub category"
   - if collection.present?
-    = select_tag "product[sub_category_id]", options_from_collection_for_select(collection, "id", "name"), class: "select optional form-control", include_blank: "Choose a category first to enable"
+    = select_tag "product[sub_category_id]", options_from_collection_for_select(collection, "id", "name"), class: "select optional form-control", include_blank: false
+  - elsif @product.sub_category.present?
+    = select_tag "product[sub_category_id]", options_from_collection_for_select(SubCategory.all, "id", "name", @product.sub_category.id), class: "select optional form-control", include_blank: false, disabled: true
   - else
     = select_tag "product[sub_category_id]", "", class: "select optional form-control", include_blank: "Choose a category first to enable", disabled: true
+
+  
