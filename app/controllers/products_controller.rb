@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
   def category
     @category = Category.find_by(name: params[:name])
     @products = @category.products.includes(:images).recent.page(params[:page]).per(6)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def sub_category

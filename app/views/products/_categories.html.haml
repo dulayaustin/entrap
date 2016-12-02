@@ -3,8 +3,8 @@
 %ul.list-group
   - @categories.each do |category|
     %li.list-group-item.parent
-      = content_tag "a", category.name, id: category.id, class: "category"
-      / = link_to category.name, category_products_path(category.name.downcase), id: category.id, class: "category"
+      / = content_tag "a", category.name, id: category.id, class: "category"
+      = link_to category.name, category_products_path(category.name.downcase), id: category.id, class: "category", remote: true
       /  Use this when it is Ajaxified
 
       %ul.list-group.child{ "data-category-id" => "#{category.id}" }

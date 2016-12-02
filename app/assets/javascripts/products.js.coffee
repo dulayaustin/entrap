@@ -5,6 +5,7 @@ $ ->
   $(document).on "click", ".category", (e) ->
     e.preventDefault()
     $(this).parent().siblings().removeClass("active")
+    $(".child").children().removeClass("active")
     $(this).parent().addClass("active")    
     id = $(this).attr("id")    
     $(".category").not(this).siblings(".child").slideUp()
