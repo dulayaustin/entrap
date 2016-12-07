@@ -1,4 +1,5 @@
-= simple_form_for @product, remote: true, html: { multipart: true, class: "form-horizontal" } do |f|
+= simple_form_for product, remote: true, html: { multipart: true, class: "form-horizontal" } do |f|
+  = "DANDAN: #{product.errors.inspect}"
   = f.error_notification
   .form-inputs
     .row-fluid
@@ -12,14 +13,14 @@
         = f.input :description, as: :summernote
       .col-sm-12.col-lg-6  
         = f.simple_fields_for :category do |c|
-          - if @category.present?
-            = c.input :category, collection: Category.for_select, selected: @category.id, include_blank: false, input_html: { name: '' }, required: false
+          - if product.category.present?
+            = c.input :category, collection: Category.for_select, selected: product.category.id, include_blank: false, input_html: { name: '' }, required: false
           - else
             = c.input :category, collection: Category.for_select, include_blank: "Select a category", input_html: { name: '' }, required: false
             
       .col-sm-12.col-lg-6#sub_category_container 
-        - if @sub_category.present?
-          = render "products/select_sub_categories", collection: @sub_categories, sub_category: @sub_category
+        - if product.sub_category.present?
+          = render "products/select_sub_categories", collection: @sub_categories, sub_category: product.sub_category
         - else
           = render "products/select_sub_categories", collection: [], sub_category: ""
       .col-sm-4

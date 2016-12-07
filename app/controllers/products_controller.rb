@@ -56,9 +56,12 @@ class ProductsController < ApplicationController
       if params[:images]
         params[:images].each { |image| @product.images.create(image: image) }
       end
-      redirect_to products_path, notice: 'Product was successfully created.'
+
+      @success = true
+      
     else
-      render :new
+      @category = @product.category
+      @success = false
     end
   end
 
@@ -92,5 +95,6 @@ class ProductsController < ApplicationController
       if values[:category].present?
         values.except![:category]
       end
+      values
     end
 end

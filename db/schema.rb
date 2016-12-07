@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20161202072332) do
     t.index ["sub_category_id"], name: "index_sub_category_sizes_on_sub_category_id", using: :btree
   end
 
-  add_foreign_key "stocks", "products"
   add_foreign_key "stocks", "sizes"
   add_foreign_key "sub_category_sizes", "sizes"
   add_foreign_key "sub_category_sizes", "sub_categories"

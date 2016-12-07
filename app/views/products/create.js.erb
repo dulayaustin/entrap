@@ -1,0 +1,5 @@
+<% if @success %>
+  alert("success");
+<% else %>
+  $("#form-holder").html("<%= j render 'products/form', product: @product %>");
+<% end %>
