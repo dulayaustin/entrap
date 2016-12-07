@@ -8,14 +8,17 @@ class CreateSubCategorySizes < ActiveRecord::Migration[5.0]
     end
     bjj_gi = Category.find_by(name: "BJJ Gi's")
     bjj_gi.sub_categories.each do |gi_sub|
-      Size.where(measurement: ["a1", "a2", "a3", "a4", "a5"]).each do |gi_size|
+      Size.where(label: ["a1", "a2", "a3", "a4", "a5"]).each do |gi_size|
         SubCategorySize.create(sub_category_id: gi_sub.id, size_id: gi_size.id)
       end
     end
     SubCategory.where(name: ["MMA Shorts", "Compression", "Long", "Short", "Tees"]).each do |sub_cat|
-      Size.where(measurement: ["s", "m", "lg", "xl"]).each do |standard_size|
+      Size.where(label: ["s", "m", "lg", "xl"]).each do |standard_size|
         SubCategorySize.create(sub_category_id: sub_cat.id, size_id: standard_size.id)
       end
     end
+    caps = SubCategory.find_by(name: "Caps")
+    free_size = Size.find_by(label: "free size")
+    SubCategorySize.create(sub_category_id: caps.id, size_id: free_size.id)
   end
 end

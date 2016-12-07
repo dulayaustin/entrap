@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129090318) do
+ActiveRecord::Schema.define(version: 20161202072332) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -59,9 +59,19 @@ ActiveRecord::Schema.define(version: 20161129090318) do
   end
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "measurement"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.integer  "size_id"
+    t.integer  "quantity",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["product_id"], name: "index_stocks_on_product_id", using: :btree
+    t.index ["size_id"], name: "index_stocks_on_size_id", using: :btree
   end
 
   create_table "sub_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -81,6 +91,8 @@ ActiveRecord::Schema.define(version: 20161129090318) do
     t.index ["sub_category_id"], name: "index_sub_category_sizes_on_sub_category_id", using: :btree
   end
 
+  add_foreign_key "stocks", "products"
+  add_foreign_key "stocks", "sizes"
   add_foreign_key "sub_category_sizes", "sizes"
   add_foreign_key "sub_category_sizes", "sub_categories"
 end

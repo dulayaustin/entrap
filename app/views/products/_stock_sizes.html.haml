@@ -1,0 +1,9 @@
+.row
+  - if sizes.present?
+    - sizes.each do |size|
+      .col-xs-5.col-sm-3
+        = hidden_field_tag "product[stocks_attributes][][size_id]", size.id
+        .form-group.numeric.required.product_stock_quantity
+          %label.numeric.control-label{for: "product_stock_quantity"}
+            = size.label.upcase
+          = number_field_tag "product[stocks_attributes][][quantity]", '0', class: "numeric required form-control", step: "any", min: 0

@@ -1,1 +1,6 @@
-$("#sub_category_container").html("<%= j render 'products/select_sub_categories', collection: @sub_categories_collection %>")
+<% if @sub_categories_collection.present? %>
+  $("#sub_category_container").html("<%= j render 'products/select_sub_categories', collection: @sub_categories_collection, sub_category: '' %>");
+<% elsif @sizes_collection.present? %>
+  $("#stock_container").html("<%= j render 'products/stock_sizes', sizes: @sizes_collection %>");
+<% end %>
+

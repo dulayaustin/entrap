@@ -12,17 +12,12 @@ $ ->
     
     if $(".parent").hasClass("active")           
       $(".child[data-category-id='#{id}']").slideDown()
-  
 
-  $(document).on "change", "#product_category_category", (e) ->
+
+  $(document).on "click", "#sub-category", (e) ->
     e.preventDefault()
-    $("#product_sub_category_id").prop("disabled", false)
-    $.ajax
-      type: "GET"
-      url: "/products/new"
-      dataType: "script"
-      data: 
-        category_id: $(this).val()
+    $(this).parent().siblings().removeClass("active")
+    $(this).parent().addClass("active")
 
 
   $(document).on "click", ".product-image", (e) ->
@@ -38,10 +33,25 @@ $ ->
     $(".main-product-image img").attr("src", src_large)
 
 
-  $(document).on "click", "#sub-category", (e) ->
+  $(document).on "change", "#product_category_category", (e) ->
     e.preventDefault()
-    $(this).parent().siblings().removeClass("active")
-    $(this).parent().addClass("active")
+    $("#product_sub_category_id").prop("disabled", false)
+    $.ajax
+      type: "GET"
+      url: "/products/new"
+      dataType: "script"
+      data:
+        category_id: $(this).val()
+
+
+  $(document).on "change", "#product_sub_category_id", (e) ->
+    e.preventDefault()
+    $.ajax
+      type: "GET"
+      url: "/products/new"
+      dataType: "script"
+      data:
+        sub_category_id: $(this).val()
     
 
 

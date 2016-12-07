@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  sub_category_size: one
+  status: MyString
+
+two:
+  product: two
+  sub_category_size: two
+  status: MyString

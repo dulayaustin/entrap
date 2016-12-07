@@ -1,4 +1,5 @@
 = simple_form_for @product, remote: true, html: { multipart: true, class: "form-horizontal" } do |f|
+  = f.error_notification
   .form-inputs
     .row-fluid
       .col-sm-6
@@ -6,21 +7,30 @@
       .col-sm-4
         = f.input :color, placeholder: 'Enter Color'
       .col-sm-2
-        = f.input :price, placeholder: 'Enter Price', input_html: {value: number_with_precision(f.object.price, precision: 2) }
+        = f.input :price, input_html: { value: number_with_precision(f.object.price ||= 0, precision: 2), min: 0.01 }
       .col-sm-12
         = f.input :description, as: :summernote
       .col-sm-12.col-lg-6  
         = f.simple_fields_for :category do |c|
-          - if @product.sub_category.present?
-            = c.input :category, collection: Category.for_select, selected: @category.id, include_blank: false
+          - if @category.present?
+            = c.input :category, collection: Category.for_select, selected: @category.id, include_blank: false, input_html: { name: '' }, required: false
           - else
-            = c.input :category, collection: Category.for_select, include_blank: "Select a category"
+            = c.input :category, collection: Category.for_select, include_blank: "Select a category", input_html: { name: '' }, required: false
             
-      .col-sm-12.col-lg-6#sub_category_container    
-        = render "products/select_sub_categories", collection: []
-      .col-sm-12    
+      .col-sm-12.col-lg-6#sub_category_container 
+        - if @sub_category.present?
+          = render "products/select_sub_categories", collection: @sub_categories, sub_category: @sub_category
+        - else
+          = render "products/select_sub_categories", collection: [], sub_category: ""
+      .col-sm-4
         = f.label :images 
         = file_field_tag "images[]", multiple: true, type: :file
+      .col-sm-6.col-sm-offset-2#stock_container
+        / = render "products/stock_sizes", sizes: []
+        / = f.simple_fields_for :stock do |s|
+        /   = s.hidden_field :size_id
+        /   = s.input :quantity, as: :numeric, input_html: { value: 0, min: 0 }, label: false
+        / stocks field
       .col-sm-12
         #preview.clearfix
           - if @product.images.present?
@@ -34,3 +44,5 @@
   .form-actions
     = f.button :submit, "Save", class: "btn-danger"
     = link_to 'Cancel', :back, class: "btn btn-default"
+
+
