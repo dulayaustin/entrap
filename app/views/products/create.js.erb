@@ -1,5 +1,9 @@
 <% if @success %>
-  alert("success");
+  $.alert("success");
 <% else %>
+  // $(function() {
+    // return $(document).on("turbolinks:load", function() {
   $("#form-holder").html("<%= j render 'products/form', product: @product %>");
+  //   });
+  // });
 <% end %>

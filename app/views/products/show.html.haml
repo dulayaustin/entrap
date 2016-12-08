@@ -27,13 +27,16 @@
         = @product.color
       .description
         = @product.description.html_safe  
-      %p
+      .sizes
         %strong= "Sizes:"
-        - if @product.sizes.present?
-          - @product.sizes.each do |size|
-            = size.label.upcase
+        - if @product.stocks.present?
+          %ul
+            - @product.stocks.each do |stock|
+              %li.size{ title: stock_status(stock.quantity) }
+                = stock.size.label.upcase
+          %i= "Point on each size to see if there's a stock"
         - else
-          = "Free Sizes"
+          = "Not available"
 
     .ratings
       %p.pull-right

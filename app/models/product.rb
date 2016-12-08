@@ -8,9 +8,9 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :stocks
 
-  # validates :price, numericality: { greater_than_or_equal_to: 0.01 }
+  validates_associated :sub_category, :stocks
+  validates :name, :color, :description, :sub_category_id, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   
   scope :recent, -> {order("created_at DESC")}
-
-  
 end

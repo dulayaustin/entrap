@@ -1,4 +1,4 @@
-= simple_form_for product, remote: true, html: { multipart: true, class: "form-horizontal" } do |f|
+= simple_form_for product, remote: true, validate: true, html: { multipart: true, class: "form-horizontal" } do |f|
   = "DANDAN: #{product.errors.inspect}"
   = f.error_notification
   .form-inputs
@@ -13,25 +13,27 @@
         = f.input :description, as: :summernote
       .col-sm-12.col-lg-6  
         = f.simple_fields_for :category do |c|
-          - if product.category.present?
-            = c.input :category, collection: Category.for_select, selected: product.category.id, include_blank: false, input_html: { name: '' }, required: false
+          - if @category.present?
+            = c.input :category, collection: Category.for_select, selected: @category.id, include_blank: false, input_html: { name: '' }, required: false, readonly: true, disabled: true
           - else
             = c.input :category, collection: Category.for_select, include_blank: "Select a category", input_html: { name: '' }, required: false
             
-      .col-sm-12.col-lg-6#sub_category_container 
-        - if product.sub_category.present?
-          = render "products/select_sub_categories", collection: @sub_categories, sub_category: product.sub_category
+      .col-sm-12.col-lg-6#sub_category_container
+        - if @sub_category.present?
+          = render "products/select_sub_categories", collection: @sub_categories, sub_category: @sub_category
         - else
           = render "products/select_sub_categories", collection: [], sub_category: ""
       .col-sm-4
         = f.label :images 
         = file_field_tag "images[]", multiple: true, type: :file
       .col-sm-6.col-sm-offset-2#stock_container
-        / = render "products/stock_sizes", sizes: []
-        / = f.simple_fields_for :stock do |s|
-        /   = s.hidden_field :size_id
-        /   = s.input :quantity, as: :numeric, input_html: { value: 0, min: 0 }, label: false
-        / stocks field
+        - if product.stocks.present?
+          / = render "products/stock_sizes", sizes: [], stocks: product.stocks
+          .row
+            = f.simple_fields_for :stocks do |s|
+              .col-xs-5.col-sm-3
+                = s.input :size_id, as: :hidden
+                = s.input :quantity, input_html: { value: s.object.quantity, min: 0 }, label: s.object.size.label.upcase
       .col-sm-12
         #preview.clearfix
           - if @product.images.present?

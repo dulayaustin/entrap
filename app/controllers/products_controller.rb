@@ -51,17 +51,19 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    
     if @product.save
       if params[:images]
         params[:images].each { |image| @product.images.create(image: image) }
       end
-
-      @success = true
-      
+      # @success = true
+      redirect_to product_path(@product), notice: 'Product was successfully created.'
     else
-      @category = @product.category
-      @success = false
+      # @category = @product.category
+      # @success = false
+      respond_to do |format|
+        format.html { render :new }
+        format.js { render layout: false }
+      end
     end
   end
 
@@ -70,7 +72,7 @@ class ProductsController < ApplicationController
       if params[:images]
         params[:images].each { |image| @product.images.create(image: image) }
       end
-      redirect_to product_path(@product), notice: "Product #{@product.name.titleize} was successfully updated."
+      render js: "window.location = '#{product_path(@product)}' ", notice: "Product #{@product.name.titleize} was successfully updated."
     else
       render :edit
     end
