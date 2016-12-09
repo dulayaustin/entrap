@@ -11,39 +11,40 @@
   //     border-color: #b71724
 
 .button-actions
-  margin: 9px
+  margin: 5px
+  margin-bottom: 0
 
-.main-product-image
-  padding: 10px
+.product-image-container
+  margin-bottom: 10px
 
-.images
-  display: table
-  margin: 0 auto
-  margin-top: 10px
-  padding: 0 9px
+  .images
+    display: table
+    margin: 0 auto
+    margin-top: 10px
+    padding: 0 9px
 
-  ul 
-    padding: 0
+    ul
+      padding: 0
 
-    li
-      display: inline
-      margin-right: 3px
-
-      .product-image img
+      li
         display: inline
-        border: 1px solid #999
-        padding: 2px
-        opacity: 0.5
-        width: 60px
-        height: 60px
-        margin-bottom: 2px
+        margin-right: 3px
 
-    li.active img
-      opacity: 1
-      box-shadow: 1px 1px 7px #68141d
+        .product-image img
+          display: inline
+          border: 1px solid #999
+          padding: 2px
+          opacity: 0.5
+          width: 60px
+          height: 60px
+          margin-bottom: 2px
 
-    li:last-child
-      margin-right: 0
+      li.active img
+        opacity: 1
+        box-shadow: 1px 1px 7px #68141d
+
+      li:last-child
+        margin-right: 0
 
 .product-name
   margin-bottom: 1px
@@ -54,6 +55,8 @@
   margin-top: 0
 
 .sizes
+  margin-bottom: 5px
+
   ul
     display: inline
     padding: 0
@@ -66,5 +69,9 @@
 
   i
     display: block
-    color: #aaa
+    opacity: .3
+
+.caption-full
+  .ratings
+    padding: 0
       
