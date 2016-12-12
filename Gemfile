@@ -14,6 +14,8 @@ gem "paperclip"
 gem 'simple_form'
 gem 'kaminari'
 gem 'summernote-rails'
+gem 'omniauth-facebook'
+gem 'figaro'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
