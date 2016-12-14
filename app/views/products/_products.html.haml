@@ -9,11 +9,11 @@
             = image_tag product.images.first.image.url(), class: "img-responsive products-images"
         .caption
           %h4.product-name
-            = link_to product.name, product
+            = link_to product.name.titleize, product
             %span.pull-right
               = price_with_unit(product.price)
           %h5.color
-            = product.color
+            = product.color.titleize
 
           .actions    
             = link_to "Edit", edit_product_path(product)
@@ -21,12 +21,8 @@
             = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure you want to delete this product?' }               
         .ratings
           %p.pull-right
-            = "16 reviews"
+            = pluralize(product.reviews.count, "review")
           %p
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
-            %span.glyphicon.glyphicon-star
+            .star-rating{ "data-score" => "#{average_rating(product.reviews)}" }
 
 = paginate @products

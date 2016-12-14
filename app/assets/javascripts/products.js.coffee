@@ -2,6 +2,20 @@ $ ->
   $(document).on "turbolinks:load", ->
     $(".images li:first").addClass("active")
 
+    $('#star-rating').raty
+      path: '/assets'
+      score: 4
+      scoreName: 'review[rating]'
+
+    $('.star-rating').raty
+      path: '/assets/'
+      readOnly: true
+      starOn: 'red-star-on.png'
+      starOff: 'red-star-off.png'
+      score: ->
+        $(this).attr 'data-score'
+
+
   $(document).on "click", ".category", (e) ->
     e.preventDefault()
     $(this).parent().siblings().removeClass("active")

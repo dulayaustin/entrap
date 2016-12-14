@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
     begin
       user = User.from_omniauth(env["omniauth.auth"])
       session[:user_id] = user.id
-      flash[:notice] = "Welcome, #{user.name}!"
+      flash[:notice] = "Welcome, #{user.name}! You can now leave a review on products"
     rescue
       flash[:danger] = "There was an error while trying to authenticate you..."
     end
-    redirect_to root_url
+    redirect_to request.env['omniauth.origin'] || root_url
   end
 
   def destroy

@@ -3,8 +3,8 @@ class Product < ApplicationRecord
   has_one :category, through: :sub_category, source: :category
   has_many :images, dependent: :destroy, inverse_of: :product
   has_many :stocks, dependent: :destroy, inverse_of: :product
-  # has_many :sizes, through: :sub_category, source: :sizes 
   has_many :sizes, through: :stocks, source: :size
+  has_many :reviews
 
   accepts_nested_attributes_for :stocks
 

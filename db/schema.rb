@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212092548) do
+ActiveRecord::Schema.define(version: 20161213081052) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 20161212092548) do
     t.index ["sub_category_id"], name: "index_products_on_sub_category_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.string   "user_name"
+    t.text     "content",    limit: 65535
+    t.integer  "rating"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id", using: :btree
+  end
+
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "label"
     t.datetime "created_at", null: false
@@ -96,12 +106,14 @@ ActiveRecord::Schema.define(version: 20161212092548) do
     t.string   "uid"
     t.string   "name"
     t.string   "email"
+    t.string   "image"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
+  add_foreign_key "reviews", "products"
   add_foreign_key "stocks", "products"
   add_foreign_key "stocks", "sizes"
   add_foreign_key "sub_category_sizes", "sizes"

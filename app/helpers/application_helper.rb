@@ -9,4 +9,9 @@ module ApplicationHelper
     title += app_title
     content_for(:title, title.join(" | "))
   end
+
+  def first_name(name)
+    first = name.split.first
+    first
+  end
 end

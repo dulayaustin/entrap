@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get 'category/:name' => 'products#category', as: 'category'
       get 'sub_category/:name' => 'products#sub_category', as: 'sub_category'
     end
+    member do
+      post :review
+    end
   end
 
   resources :about, only: [:index, :update]

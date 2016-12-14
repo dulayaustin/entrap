@@ -1,0 +1,15 @@
+= simple_form_for [product, review], url: review_product_path(product), html: { class: "form-horizontal" } do |f|
+  = f.error_notification
+  = f.hidden_field :product_id, value: product.id
+  = f.hidden_field :user_name, value: user_name
+  .row-fluid.form-group
+    .col-sm-12
+      = f.label :rating, "Rate this product: ",class: "control-label"
+      #star-rating
+
+  .row-fluid
+    .col-sm-11
+      = f.input :content, as: :text, input_html: { row: 4 }, label: false
+    .col-sm-1
+      = f.button :submit, "Submit", class: "btn btn-primary"
+

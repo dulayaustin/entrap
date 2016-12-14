@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :review]
   before_action :set_categories, only: [:index, :category, :sub_category, :show]
   skip_before_action :verify_authenticity_token, only: :create
 
@@ -26,6 +26,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @review = Review.new
+
+    @reviews = @product.reviews
   end
 
   def edit
@@ -83,6 +86,17 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: "Product #{@product.name.titleize} was being deleted."
   end
 
+  def review
+    @review = Review.new(review_params)
+
+    if @review.save
+      redirect_to product_path(@product)
+    else
+      render :show
+    end
+
+  end
+
   private
     def set_product
       @product = Product.find(params[:id])
@@ -98,5 +112,9 @@ class ProductsController < ApplicationController
         values.except![:category]
       end
       values
+    end
+
+    def review_params
+      params.require(:review).permit(:product_id, :user_name, :content, :rating)
     end
 end
