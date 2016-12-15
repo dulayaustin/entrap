@@ -12,5 +12,5 @@ class User < ApplicationRecord
     user
   end
 
-  ADMINS = %w{vash_dulay@yahoo.com}
+  ADMINS = %w{vash_dulay@yahoo.com ajangeles18@gmail.com}
 end
