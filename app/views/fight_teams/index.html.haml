@@ -1,7 +1,8 @@
 - page_title(["The Fight Team"])
 .col-sm-12
   %header
-    .pull-right= link_to "Add Fighter", "#", class: "btn btn-sm btn-primary", "data-toggle" => "modal", "data-target" => "#new-fighter-modal"
+    - if admin?
+      .pull-right= link_to "Add Fighter", "#", class: "btn btn-sm btn-primary", "data-toggle" => "modal", "data-target" => "#new-fighter-modal"
     %h2= "The Fight Team"
   %article#container-fight-team
     = render @fight_teams

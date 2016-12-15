@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     begin
       user = User.from_omniauth(env["omniauth.auth"])
       session[:user_id] = user.id
-      flash[:notice] = "Welcome, #{user.name}! You can now leave a review on products"
+      flash[:notice] = "Welcome, #{user.name}!"
     rescue
       flash[:danger] = "There was an error while trying to authenticate you..."
     end

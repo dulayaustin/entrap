@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   def show
     @review = Review.new
 
-    @reviews = @product.reviews
+    @reviews = @product.reviews.recent
   end
 
   def edit

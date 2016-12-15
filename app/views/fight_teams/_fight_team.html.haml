@@ -1,15 +1,17 @@
 .fighter.clearfix{ id: "fight-id-#{fight_team.id}"}
-  .pull-right
-    = link_to "#", "data-toggle" => "modal", "data-target" => "#edit-fighter-modal-#{ fight_team.id }" do
-      %span.glyphicon.glyphicon-edit{ title: "Edit this fighter" }
-    |
-    = link_to fight_team, method: :delete, data: { confirm: "Are you sure you want to remove this fighter?" } do
-      %span.glyphicon.glyphicon-remove{ title: "Remove this fighter" }
+  - if admin?
+    .pull-right
+      = link_to "#", "data-toggle" => "modal", "data-target" => "#edit-fighter-modal-#{ fight_team.id }" do
+        %span.glyphicon.glyphicon-edit{ title: "Edit this fighter" }
+      |
+      = link_to fight_team, method: :delete, data: { confirm: "Are you sure you want to remove this fighter?" } do
+        %span.glyphicon.glyphicon-remove{ title: "Remove this fighter" }
   .picture
     = image_tag fight_team.picture.url(:large), class: "img-responsive"
   .description
     %h3= fight_team.name.titleize
     %p= fight_team.description.html_safe
+
 
   .row
     = simple_form_for fight_team, method: :patch, html: { class: "form-horizontal" } do |f|

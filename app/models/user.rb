@@ -11,4 +11,6 @@ class User < ApplicationRecord
     user.save!
     user
   end
+
+  ADMINS = %w{vash_dulay@yahoo.com}
 end

@@ -1,7 +1,8 @@
 - page_title(["Contact"])
 .col-sm-12
   %header
-    .pull-right= link_to "Edit Content", "#", class: "btn btn-sm btn-primary", "data-toggle" => "modal", "data-target" => "#edit-contanct-modal"
+    - if admin?
+      .pull-right= link_to "Edit Content", "#", class: "btn btn-sm btn-primary", "data-toggle" => "modal", "data-target" => "#edit-contanct-modal"
     %h2= "Contact"
   .content
     = render "content"

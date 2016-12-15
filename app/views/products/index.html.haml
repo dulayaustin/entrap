@@ -6,7 +6,8 @@
   .row
     .col-sm-12
       .pull-right
-        = link_to "Add Product", new_product_path, class: "btn btn-sm btn-primary"
+        - if admin?
+          = link_to "Add Product", new_product_path, class: "btn btn-sm btn-primary"
 
   %br
   = render "slide_image"
