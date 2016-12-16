@@ -28,7 +28,7 @@
               = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure you want to delete this product?' }
           .ratings
             .pull-right
-              = pluralize(product.reviews.count, "review")
+              = pluralize(product.reviews_count, "review")
             .star-rating{ "data-score" => "#{average_rating(product.reviews)}" }
 
 = paginate @products

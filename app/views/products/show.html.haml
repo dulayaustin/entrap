@@ -32,7 +32,7 @@
         %strong= "Sizes:"
         - if @product.stocks.present?
           %ul
-            - @product.stocks.each do |stock|
+            - @product.stocks.includes(:size).each do |stock|
               %li.size{ title: stock_status(stock.quantity) }
                 = stock.size.label.upcase
           %i= "Point on each size to see if there's a stock"
@@ -41,7 +41,7 @@
 
       .ratings
         .pull-right
-          = pluralize(@reviews.count, "review")
+          = pluralize(@reviews_count, "review")
         .star-rating{ "data-score" => "#{average_rating(@reviews)}" }
 
 .col-sm-12

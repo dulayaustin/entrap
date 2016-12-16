@@ -4,12 +4,12 @@ class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
 
   def index
-    @products = Product.includes(:images).recent.page(params[:page]).per(6)
+    @products = Product.includes([:images, :reviews]).recent.page(params[:page]).per(6)
   end
 
   def category
     @category = Category.find_by(name: params[:name])
-    @products = @category.products.includes(:images).recent.page(params[:page]).per(6)
+    @products = @category.products.includes([:images, :reviews]).recent.page(params[:page]).per(6)
     respond_to do |format|
       format.js
       format.html
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
   def sub_category
     @sub_category = SubCategory.find_by(name: params[:name])
-    @products = @sub_category.products.includes(:images).recent.page(params[:page]).per(6)
+    @products = @sub_category.products.includes([:images, :reviews]).recent.page(params[:page]).per(6)
     respond_to do |format|
       format.js
       format.html
@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
     @review = Review.new
 
     @reviews = @product.reviews
+    @reviews_count = @product.reviews_count
   end
 
   def edit
