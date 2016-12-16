@@ -1,4 +1,4 @@
 $("#products").fadeOut(200, function() {
-  $("#products_container").html("<%= j render 'products' %>");
+  $("#products_container").html("<%= j render 'products', products: @products, category: '', sub_category: @sub_category %>");
   $(document).prop('title', "<%= [@sub_category.name, @sub_category.category.name, 'Entrap FightGear'].join(' | ').html_safe %>");
 });

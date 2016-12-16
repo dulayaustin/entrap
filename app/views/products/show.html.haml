@@ -40,7 +40,7 @@
           = "Not available"
 
       .ratings
-        %p.pull-right
+        .pull-right
           = pluralize(@reviews.count, "review")
         .star-rating{ "data-score" => "#{average_rating(@reviews)}" }
 
