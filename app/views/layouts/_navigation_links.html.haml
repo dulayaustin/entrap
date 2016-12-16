@@ -8,12 +8,4 @@
 %li{ class: active_class(contact_index_path) }
   = link_to "Contact", contact_index_path
 
-- if current_user
-  %li.sign-in-name
-    %strong= first_name(current_user.name)
-  %li
-    = link_to "Log Out", signout_path, id: "sign_out"
-- else
-  %li
-    = link_to "Log In with Facebook", "/auth/facebook", id: "sign_in"
 

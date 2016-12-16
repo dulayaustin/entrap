@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
   belongs_to :product
 
-  scope :recent, -> {order("created_at DESC")}
+  default_scope {order("created_at DESC")}
 end
