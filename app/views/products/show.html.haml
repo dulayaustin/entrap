@@ -12,20 +12,22 @@
 .col-sm-6
   .thumbnail
     - if admin?
-      .button-actions.pull-right
-        = link_to edit_product_path(@product) do
-          %span.glyphicon.glyphicon-edit{ title: "Edit" }
-        |
-        = link_to @product, method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } do
-          %span.glyphicon.glyphicon-remove{ title: "Delete" }
+      .button-actions.clearfix
+        .pull-right
+          = link_to edit_product_path(@product) do
+            %span.glyphicon.glyphicon-edit{ title: "Edit" }
+          |
+          = link_to @product, method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } do
+            %span.glyphicon.glyphicon-remove{ title: "Delete" }
 
     .caption-full
-      %h2.product-name
-        = @product.name.titleize
-        %span.pull-right
+      .product-heading.clearfix
+        %h2.product-name
+          = @product.name.titleize
+        %span.color
+          = @product.color.titleize
+        %h2.price.pull-right
           = price_with_unit(@product.price)
-      %h5.color
-        = @product.color.titleize
       .description
         = @product.description.html_safe  
       .sizes

@@ -1,4 +1,4 @@
-- page_title([])
+- page_title(["#{@sub_category.name}", "#{@sub_category.category.name}"])
 .col-sm-3
   = render "categories"
 
@@ -14,4 +14,3 @@
 
   #products_container
     = render "products", products: @products, category: '', sub_category: ''
-    = paginate @products
