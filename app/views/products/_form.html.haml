@@ -1,5 +1,5 @@
 = simple_form_for product, remote: true, validate: true, html: { multipart: true, class: "form-horizontal" } do |f|
-  = "DANDAN: #{product.errors.inspect}"
+  / = "DANDAN: #{product.errors.inspect}"
   = f.error_notification
   .form-inputs
     .row-fluid

@@ -41,6 +41,7 @@ body {
 .thumbnail {
     padding: 0;
     border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 2px;
 }
 
 .thumbnail .caption {
@@ -50,7 +51,6 @@ body {
 .thumbnail .caption-full {
     padding: 17px;
     color: #333;
-    padding-top: 0;
 }
 
 footer {

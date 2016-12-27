@@ -33,6 +33,10 @@ img {
   }
 // apply styles to HTML elements
 // to make views framework-neutral
+.navbar-inverse {
+  background-color: #000;
+}
+
 main {
   @extend .container;
   width: 100%;
@@ -55,7 +59,6 @@ ul.nav.navbar-nav {
   .sign-in-name {
     padding: 15px;
     color: #fff;
-    display: inline;
   }
 
   .sign-out {
@@ -70,7 +73,7 @@ ul.nav.navbar-nav {
   margin-top: 5px;
 
   .logo {
-    width: 40px;
+    width: auto;
     height: 40px;
   }
 }
